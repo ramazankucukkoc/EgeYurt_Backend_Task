@@ -36,13 +36,10 @@ namespace EgeYurt_Backend_Task.DataAccess.EntityFramework
             return await Context.Set<TEntity>().FirstOrDefaultAsync(predicate);
         }
 
-        public  IList<TEntity> GetList(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null)
+        public  async Task<IList<TEntity>> GetList(Expression<Func<TEntity, bool>> filter = null)
         {
             IQueryable<TEntity> queryable = Query();
-            if (include != null)
-                queryable = include(queryable);
-
-            return (IList<TEntity>)queryable;
+            return await queryable.ToListAsync();
         }
 
         public async Task<TEntity> UpdateAsync(TEntity entity)

@@ -21,7 +21,7 @@ namespace EgeYurt_Backend_Task.Services.Customers
 
             public async Task<IList<Customer>> Handle(GetAllCustomerQuery request, CancellationToken cancellationToken)
             {
-                var customers = _customerRepository.GetList();
+                var customers =await _customerRepository.GetList(c=>!c.IsDeleted);
                 if (customers == null) throw new Exception("List not found");
 
                 return customers;

@@ -26,8 +26,6 @@ namespace EgeYurt_Backend_Task.Services.Customers
 
             public async Task<CreateCustomerDto> Handle(CreateCustomerCommand request, CancellationToken cancellationToken)
             {
-                if (request == null) throw new Exception("Data is empty !!!!");
-
                 Customer customer = new()
                 {
                     FirstName = request.FirstName,

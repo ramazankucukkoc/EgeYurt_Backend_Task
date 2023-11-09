@@ -25,5 +25,24 @@ namespace EgeYurt_Backend_Task.Controllers
             IList<Customer> result =await Mediator.Send(query);
             return Ok(result);
         }
+        [HttpPut]
+        public async Task<IActionResult> Update([FromBody] UpdateCustomerCommand updateCustomerCommand)
+        {
+            UpdateCustomerCommandDto updateCustomerCommandDto=await Mediator.Send(updateCustomerCommand);   
+            if(updateCustomerCommandDto == null)
+                return NotFound();
+
+            return Ok(updateCustomerCommandDto);
+        }
+        [HttpPost]
+        [Route("{Id}")]
+        public async Task<IActionResult> Delete([FromRoute] DeleteCustomerCommand deleteCustomerCommand)
+        {
+            DeleteCustomerCommandDto deleteCustomerCommandDto = await Mediator.Send(deleteCustomerCommand);
+            if (deleteCustomerCommandDto == null)
+                return NotFound();
+
+            return Ok(deleteCustomerCommandDto);
+        }
     }
 }

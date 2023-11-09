@@ -1,6 +1,7 @@
 ﻿using EgeYurt_Backend_Task.DataAccess.Repositories.Abstract;
 using EgeYurt_Backend_Task.DataAccess.Repositories.Concrete;
 using EgeYurt_Backend_Task.Entities;
+using EgeYurt_Backend_Task.Helpers;
 using EgeYurt_Backend_Task.Security;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -31,6 +32,8 @@ namespace EgeYurt_Backend_Task.Services.Users
             {
                 User? user = await _userRepository.GetAsync(u => u.Email == request.Email);
                 if (user == null) throw new Exception("User Not Found");
+
+                if (!HashingHelper.VerifyPasswordHash(request.Password, user.PasswordHash, user.PasswordSalt)) throw new Exception("Password is wrong !!!!");
 
                 IList<OperationClaim> operationClaims = await _userOperationClaimRepository
              .Query()

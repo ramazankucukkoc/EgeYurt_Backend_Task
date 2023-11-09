@@ -3,6 +3,7 @@ using EgeYurt_Backend_Task.Entities;
 using EgeYurt_Backend_Task.Helpers;
 using EgeYurt_Backend_Task.Security;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace EgeYurt_Backend_Task.Services.Users
 {
@@ -41,13 +42,13 @@ namespace EgeYurt_Backend_Task.Services.Users
                     LastName = request.LastName
                 };
                 User createUser = await _userRepository.AddAsync(newUser);
-               
-                IList<UserOperationClaim> userOperationClaims = _userOperationClaimRepository.GetList(u => u.UserId == createUser.Id);
-                IList<OperationClaim> operationClaims = userOperationClaims.Select(u => new OperationClaim
-                {
-                    Id = u.OperationClaimId,
-                    Name = u.OperationClaim.Name
-                }).ToArray();
+
+                IList<OperationClaim> operationClaims = await _userOperationClaimRepository
+              .Query()
+              .AsNoTracking()
+              .Where(p => p.UserId == createUser.Id)
+              .Select(p => new OperationClaim { Id = p.OperationClaimId, Name = p.OperationClaim.Name })
+              .ToListAsync();
 
                 AccessToken createdAccessToken = _tokenHelper.CreateToken(createUser,operationClaims);
                 RefreshToken createdRefreshToken = _tokenHelper.CreateRefreshToken(createUser);
