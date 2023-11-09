@@ -20,7 +20,7 @@ namespace EgeYurt_Backend_Task.Security
             _tokenOptions =Configuration.GetSection("TokenOptions").Get<TokenOptions>();
         }
 
-        public RefreshToken CreateRefreshToken(User user, string ipAddress)
+        public RefreshToken CreateRefreshToken(User user)
         {
             RefreshToken refreshToken = new()
             {
@@ -28,7 +28,6 @@ namespace EgeYurt_Backend_Task.Security
                 Token = Convert.ToBase64String(RandomNumberGenerator.GetBytes(64)),
                 Expires = DateTime.UtcNow.AddDays(7),
                 CreatedDate = DateTime.UtcNow,
-                CreatedByIp = ipAddress
             };
 
             return refreshToken;

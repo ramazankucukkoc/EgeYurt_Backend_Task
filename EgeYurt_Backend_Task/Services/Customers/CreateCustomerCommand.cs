@@ -3,9 +3,10 @@ using EgeYurt_Backend_Task.DataAccess.Repositories.Abstract;
 using EgeYurt_Backend_Task.Entities;
 using MediatR;
 
-namespace EgeYurt_Backend_Task.Services
+namespace EgeYurt_Backend_Task.Services.Customers
 {
-    public class CreateCustomerCommand : IRequest<CreateCustomerDto>,ISecuredRequest
+    public class CreateCustomerCommand : IRequest<CreateCustomerDto>
+        , ISecuredRequest
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

@@ -5,13 +5,12 @@
         public int UserId { get; set; }
         public string Token { get; set; }
         public DateTime Expires { get; set; }
-        public string CreatedByIp { get; set; }
         public virtual User User { get; set; }
         public RefreshToken()
         {
 
         }
-        public RefreshToken(int id, DateTime createdDate, DateTime updateDate, string token, DateTime expires, string createdByIp)
+        public RefreshToken(int id, DateTime createdDate, DateTime updateDate, string token, DateTime expires)
                        
         {
             Id = id;
@@ -19,7 +18,6 @@
             UpdatedDate = updateDate;
             Token = token;
             Expires = expires;
-            CreatedByIp = createdByIp;
         }
     }
 }

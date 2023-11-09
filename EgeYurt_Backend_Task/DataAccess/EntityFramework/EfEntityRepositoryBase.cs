@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
 using System;
+using System.Collections;
 using System.Linq.Expressions;
 
 namespace EgeYurt_Backend_Task.DataAccess.EntityFramework
@@ -9,6 +11,7 @@ namespace EgeYurt_Backend_Task.DataAccess.EntityFramework
         where TContext : DbContext, new()
     {
         protected TContext Context;
+        public IQueryable<TEntity> Query() => Context.Set<TEntity>();
 
         public EfEntityRepositoryBase(TContext context)
         {
@@ -33,14 +36,13 @@ namespace EgeYurt_Backend_Task.DataAccess.EntityFramework
             return await Context.Set<TEntity>().FirstOrDefaultAsync(predicate);
         }
 
-        public IList<TEntity> GetList(Expression<Func<TEntity, bool>> filter = null)
+        public  IList<TEntity> GetList(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null)
         {
-            using (var context = new TContext())
-            {
-                return filter == null
-                    ? context.Set<TEntity>().ToList()
-                    : context.Set<TEntity>().Where(filter).ToList();
-            }
+            IQueryable<TEntity> queryable = Query();
+            if (include != null)
+                queryable = include(queryable);
+
+            return (IList<TEntity>)queryable;
         }
 
         public async Task<TEntity> UpdateAsync(TEntity entity)

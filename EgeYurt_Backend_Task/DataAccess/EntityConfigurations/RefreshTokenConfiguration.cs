@@ -15,7 +15,6 @@ namespace EgeYurt_Backend_Task.DataAccess.EntityConfigurations
             builder.Property(r => r.UserId).HasColumnName("UserId");
             builder.Property(r => r.Token).HasColumnName("Token");
             builder.Property(r => r.Expires).HasColumnName("Expires");
-            builder.Property(r => r.CreatedByIp).HasColumnName("CreatedByIp");
             builder.Property(u => u.IsDeleted).HasColumnName("IsDeleted").HasDefaultValue(false);
 
             builder.HasOne(r => r.User);

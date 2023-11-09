@@ -1,4 +1,4 @@
-﻿namespace EgeYurt_Backend_Task.Services
+﻿namespace EgeYurt_Backend_Task.Services.Customers
 {
     public class CreateCustomerDto
     {
