@@ -1,6 +1,5 @@
 ﻿using EgeYurt_Backend_Task.Entities;
 using EgeYurt_Backend_Task.Services.Customers;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EgeYurt_Backend_Task.Controllers
@@ -19,7 +18,7 @@ namespace EgeYurt_Backend_Task.Controllers
             return Ok(createCustomerDto);
         }
         [HttpGet]
-        public async Task<IActionResult> GelAll()
+        public async Task<IActionResult> GetAll()
         {
             GetAllCustomerQuery query = new GetAllCustomerQuery();
             IList<Customer> result =await Mediator.Send(query);
