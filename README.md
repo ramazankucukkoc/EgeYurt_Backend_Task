@@ -1,7 +1,7 @@
 # EgeYurt_Backend_Task
  ## Swagger ekledim projeme apilerdeki ekleme,silme,güncelleme ,listeleme işlemlerini tamamladım.
- ![image](https://github.com/ramazankucukkoc/EgeYurt_Backend_Task/assets/79471806/5f4093a7-013e-4899-8652-c95da9668912)
- 
+ ![image](https://github.com/ramazankucukkoc/EgeYurt_Backend_Task/assets/79471806/695cfaab-d542-4306-af79-1b2a6c92e190)
+
  Öncelikle ekleme,silme,güncelleme ve listeleme işlemleri için sisteme login olup admin rolune sahip olmalıyım.
  
  ![image](https://github.com/ramazankucukkoc/EgeYurt_Backend_Task/assets/79471806/1e671c0d-d492-4220-b4cc-757093460439)
