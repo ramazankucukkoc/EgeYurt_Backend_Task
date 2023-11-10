@@ -7,14 +7,14 @@
  
  ![image](https://github.com/ramazankucukkoc/EgeYurt_Backend_Task/assets/79471806/1e671c0d-d492-4220-b4cc-757093460439)
  
- Sisteme login olsam bile admin rolune sahip olmdaıgında aynı hatayı verecektir.
+ Sisteme login olsam bile admin rolune sahip olmdagında aynı hatayı verecektir.
 
  Database tablolarım code-first (migration işlemi) yaklaşımıyla tamamlandı.
  
  ![image](https://github.com/ramazankucukkoc/EgeYurt_Backend_Task/assets/79471806/f078836a-6a8e-46d3-9b56-f97676177502)
  ![image](https://github.com/ramazankucukkoc/EgeYurt_Backend_Task/assets/79471806/f87cc99a-985b-4f71-9ac2-6e231296992a)
  
- Ben kendimi sisteme register edip admin rolu ekledim.Aşagıdaki 1.resimde Roller tablosu ve 2.resimde admin rolumu kendime atadım.
+ Ben kendimi sisteme register edip admin rolu ekledim.Aşagıdaki 1.resimde Roller tablosu ve 2.resimde Roller ile User tablosu many-to-many ilişkisi oldugu için bir daha tablo oluşturdum onada UserOperationClaims dedim oradanda admin rolune sahip oldugum gözküyor.
 
  1.Resim : ![image](https://github.com/ramazankucukkoc/EgeYurt_Backend_Task/assets/79471806/09cb0119-6ad4-483f-b1ac-859eb26da915)
  2.Resim : ![image](https://github.com/ramazankucukkoc/EgeYurt_Backend_Task/assets/79471806/872b453b-d531-4a64-b39c-f143597e4ce1)
@@ -36,12 +36,11 @@
  ![image](https://github.com/ramazankucukkoc/EgeYurt_Backend_Task/assets/79471806/cc6c27f9-9d0f-405b-9ae8-8d69c0b567c4)
 
  ## 1.Authorization Klasörunde :AuthorizationBehavior class'ında sisteme rollerimiz ve authentication olup olmadıgımızı kontrol ettigimiz sınıf'tır.
- ## 2.DataAccess veri tabanıma erişim klasörüdür burada migrationslarımız,entitylerimiz configuration işlemleri yer alıyor ayrıca repository lerimizde burada
- yer alıyor.
+ ## 2.DataAccess veri tabanıma erişim klasörüdür burada migrationslarımız,entitylerimiz configuration işlemleri yer alıyor ayrıca repository lerimizde burada yer alıyor.
  ## 3.Entities klasörunde ise veritabanımızdaki tablolara karşılık gelen varlıklardır.
  ## 4.Extensions claims(rollerimizi) ClaimExtensions class'da jwt token içerisine emial,adını,id,rolleri içersine basmamızı sağlayan class.Ayrıca ClaimsPrincipalExtensions ise rolleri token çekme işlemi ayrıca kullanıcının id token içerisnde alıyoruz.
  ## 5.Helpers klasörunde ise kullanıcıların şifrelerini hashleme(HMACSHA512) işlemleri yer alıyor.
  ## 6.Security klasörunde ise jwt ve refreshtoken üretimi yapılan klasör.
- ## Services klasörunde add,delete,register,login,getall,update işlemleri için yazılan ayrıca kontorllerin(null Check,password verification vs.) yapıldıgı klasördür.
+ ## 7.Services klasörunde add,delete,register,login,getall,update işlemleri için yazılan ayrıca kontorllerin(null Check,password verification vs.) yapıldıgı klasördür.
  
  
