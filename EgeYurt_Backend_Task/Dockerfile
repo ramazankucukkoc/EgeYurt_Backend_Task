@@ -8,7 +8,7 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["/EgeYurt_Backend_Task.csproj", "EgeYurt_Backend_Task/"]
+COPY ["EgeYurt_Backend_Task/EgeYurt_Backend_Task.csproj", "EgeYurt_Backend_Task/"]
 RUN dotnet restore "./EgeYurt_Backend_Task/./EgeYurt_Backend_Task.csproj"
 COPY . .
 WORKDIR "/src/EgeYurt_Backend_Task"
