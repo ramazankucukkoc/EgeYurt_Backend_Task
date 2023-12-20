@@ -12,7 +12,7 @@ COPY ["/EgeYurt_Backend_Task.csproj", "EgeYurt_Backend_Task/"]
 RUN dotnet restore "./EgeYurt_Backend_Task/./EgeYurt_Backend_Task.csproj"
 COPY . .
 WORKDIR "/src/EgeYurt_Backend_Task"
-RUN dotnet build "./EgeYurt_Backend_Task.csproj" -c $BUILD_CONFIGURATION -o /app/build
+RUN dotnet build "EgeYurt_Backend_Task.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
