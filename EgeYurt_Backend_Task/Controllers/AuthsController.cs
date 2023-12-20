@@ -8,6 +8,13 @@ namespace EgeYurt_Backend_Task.Controllers
     [ApiController]
     public class AuthsController : BaseController
     {
+        [HttpGet]
+        public async Task<IActionResult> GetUserId()
+        {
+            var userId = getUserIdFromRequest();
+       
+            return Ok(userId);
+        }
         [HttpPost]
         public async Task<IActionResult> Register([FromBody] RegisterCommand registerCommand )
         {

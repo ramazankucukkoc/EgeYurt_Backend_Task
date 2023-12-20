@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  egeyurt_backend_task:
+    image: ${DOCKER_REGISTRY-}deneme
+    build:
+      context: .
+      dockerfile: EgeYurt_Backend_Task/Dockerfile
